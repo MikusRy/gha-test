@@ -2,10 +2,9 @@
 FROM docker:dind
 RUN apk update
 # Install JMeter
-RUN apk add --no-cache openjdk11-jre wget unzip \
-    && wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.tgz \
-    && tar -xzf apache-jmeter-5.6.2.tgz -C /opt \
-    && rm apache-jmeter-5.6.2.tgz
+RUN wget -q "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-$JMETER_VERSION.tgz" -O /tmp/jmeter.tgz \
+    && tar -xzf /tmp/jmeter.tgz -C /opt \
+    && rm /tmp/jmeter.tgz
 
 # Set environment variables for JMeter
 ENV JMETER_HOME /opt/apache-jmeter-5.6.2
