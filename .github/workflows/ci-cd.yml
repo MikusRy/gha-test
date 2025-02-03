@@ -27,9 +27,6 @@ jobs:
         run: |
           docker buildx build -f app.dockerfile -t my-image:latest .
 
-      - name: Run Custom Action
-        uses: ./.github/actions/performance-test  # Reference the action
-
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
@@ -37,3 +34,6 @@ jobs:
           format: 'table'
           exit-code: 1
           severity: 'CRITICAL,HIGH'
+
+      - name: Run Custom Action
+        uses: ./.github/actions/performance-test  # Reference the action
