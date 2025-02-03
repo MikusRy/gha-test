@@ -2,4 +2,4 @@ name: "Jmeter performance test"
 description: "A custom GitHub Action running inside a Docker container"
 runs:
   using: "docker"
-  image: "app.Dockerfile"
+  image: "app.dockerfile"
