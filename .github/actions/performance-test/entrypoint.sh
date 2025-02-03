@@ -7,6 +7,11 @@ dockerd-entrypoint.sh &
 # Wait for Docker to be ready
 sleep 5
 
+# Set JMeter version
+JMETER_VERSION=5.6.2
+JMETER_HOME=/opt/apache-jmeter-$JMETER_VERSION
+PATH=$JMETER_HOME/bin:$PATH
+
 echo "Running a nested Docker container..."
 docker run -dit -p 8080:8080 my-image:latest 
 
