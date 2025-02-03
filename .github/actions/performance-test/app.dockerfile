@@ -1,6 +1,12 @@
 # Use Docker-in-Docker as the base image
 FROM docker:dind
 RUN apk update
+
+# Set JMeter version
+ENV JMETER_VERSION 5.6.2
+ENV JMETER_HOME /opt/apache-jmeter-$JMETER_VERSION
+ENV PATH $JMETER_HOME/bin:$PATH
+
 # Install JMeter
 RUN wget -q "https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-$JMETER_VERSION.tgz" -O /tmp/jmeter.tgz \
     && tar -xzf /tmp/jmeter.tgz -C /opt \
