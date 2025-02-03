@@ -1,6 +1,6 @@
 # Use Docker-in-Docker as the base image
 FROM docker:dind
-
+RUN apk update
 # Install JMeter
 RUN apk add --no-cache openjdk11-jre wget unzip \
     && wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.tgz \
