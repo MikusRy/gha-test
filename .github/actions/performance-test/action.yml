@@ -1,28 +1,5 @@
-name: JMeter Performance Test
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
-
-jobs:
-  jmeter-test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Run JMeter Test
-        run: |
-          jmeter -n -t jmeter.jmx -l results.jtl -e -o jmeter-report
-
-      - name: Upload JMeter Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: jmeter-results
-          path: jmeter-report
+name: "Jmeter performance test"
+description: "A custom GitHub Action running inside a Docker container"
+runs:
+  using: "docker"
+  image: "app.Dockerfile"
