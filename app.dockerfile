@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy the application script into the container
 COPY app.py /app/
-COPY requirements.txt
+COPY requirements.txt /app/
 
 # Install any dependencies (if required, modify this as needed)
 # Example: COPY requirements.txt /app/
